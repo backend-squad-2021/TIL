@@ -17,7 +17,8 @@ public class Adder {
 
     public boolean[] byteAdder(boolean[] byteA, boolean[] byteB) {
         boolean carry = false;
-        boolean[] answer = new boolean[9];
+        int byteSize = 8;
+        boolean[] answer = new boolean[byteSize+1];
         for (int i = 0; i < answer.length - 1; i++) {
             boolean[] sum = fullAdder(byteA[i], byteB[i], carry);
             carry = sum[0];

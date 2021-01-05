@@ -5,7 +5,8 @@ public class Convertor {
         int idx = 0;
 
         while (decimal > 0) {
-            answer[idx++] = (decimal % 2) == 1 ? true : false;
+            boolean isOdd = (decimal % 2) == 1;
+            answer[idx++] = isOdd;
             decimal /= 2;
         }
 

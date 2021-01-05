@@ -1,6 +1,7 @@
 public class Convertor {
     public boolean[] dec2bin(int decimal) {
-        boolean[] answer = new boolean[8];
+        int byteSize = 8;
+        boolean[] answer = new boolean[byteSize+1];
         int i = 0;
         while (decimal != 0) {
             answer[i] = (decimal % 2) == 1 ? true : false;

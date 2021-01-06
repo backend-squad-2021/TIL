@@ -33,6 +33,7 @@ class Main {
             return;
         }
         System.out.println("input: " + input);
+        System.out.println("actual: " + output);
         System.out.println("expected: " + expected);
     }
 

@@ -8,17 +8,17 @@ public class Convertor {
 		while(decimal2 !=1) {
 			count += 1;
 		 	decimal2 = decimal2 / 2;
-		 }
-		 //2진수바꿔 배열로 만들기 
-		 int[] answer_array = new int[count+1];
-		 int i = 0; 
-		 while(decimal != 1) {
-			 answer_array[i++] = decimal % 2;
+		}
+		//2진수바꿔 배열로 만들기 
+		int[] answer_array = new int[count+1];
+		int i = 0; 
+		while(decimal != 1) {
+			answer_array[i++] = decimal % 2;
 		 	decimal = decimal / 2; 
-		 }
-		 answer_array[i] = decimal;
-		 //boolean으로 바꾸기 
-		 boolean[] answer = new boolean[answer_array.length];
+		}
+		answer_array[i] = decimal;
+		//boolean으로 바꾸기 
+		boolean[] answer = new boolean[answer_array.length];
 		 	for(int j=0; j < answer_array.length; j++) {
 		 		if(answer_array[j] == 1) {
 		 			answer[j] = true;
@@ -27,7 +27,7 @@ public class Convertor {
 		 		}
 		 	}
 		 	return answer;		 		
-		 }
+		}
 
 	public int bin2dec(boolean[] bin) {
 		int[] answer_binary = new int[bin.length];

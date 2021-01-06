@@ -5,7 +5,7 @@ public class Adder {
 	        boolean carry = bitA && bitB;
 		 	boolean[] answer = {carry, sum};
 	        return answer;
-	    }
+	}
 	 
 	public boolean[] fulladder(boolean bitA, boolean bitB, boolean carry) {
 			boolean[] halfadder1 = halfadder(bitA, bitB);
@@ -14,12 +14,12 @@ public class Adder {
 	        boolean carry2 = halfadder1[0] || halfadder2[0];
 		 	boolean[] answer = {carry2, sum};
 	        return answer;
-	    }
+	}
 	
-		public boolean[] byteadder(boolean[] byteA, boolean[] byteB) {
+	public boolean[] byteadder(boolean[] byteA, boolean[] byteB) {
 			boolean[] answer = new boolean[byteA.length + 1];
 			boolean carry = false;
-			
+		
 			for(int i=0; i < answer.length; i++) {
 				if(i == 8) {
 					answer[i] = carry;
@@ -27,9 +27,9 @@ public class Adder {
 					boolean[] fulladder = fulladder(byteA[i], byteB[i], carry);
 					answer[i] = fulladder[1];
 					carry = fulladder[0];
-        	}
-        }
-        return answer;
+				}
+			}
+			return answer;
 	}	
 }
 

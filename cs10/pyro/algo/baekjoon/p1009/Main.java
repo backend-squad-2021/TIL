@@ -54,7 +54,10 @@ class Main {
         assertOutputEquals("10", new Dto(10, 100));
     }
 
-    private static void main(BufferedReader br, BufferedWriter bw) throws IOException {
+    private static void main() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         int n = Integer.parseInt(br.readLine());
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -64,15 +67,15 @@ class Main {
             String output = solve(input);
             bw.write(output + lineSeparator);
         }
+
+        br.close();
+        bw.flush();
+        bw.close();
     }
 
     public static void main(String[] args) throws IOException {
         // test();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        main(br, bw);
-        br.close();
-        bw.flush();
-        bw.close();
+        main();
+
     }
 }

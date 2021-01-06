@@ -42,7 +42,10 @@ class Main {
         assertOutputEquals("12", new Dto(5, 7));
     }
 
-    private static void main(BufferedReader br, BufferedWriter bw) throws IOException {
+    private static void main() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         StringTokenizer st = new StringTokenizer(br.readLine());
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
@@ -50,15 +53,14 @@ class Main {
 
         String output = solve(input);
         bw.write(output);
+
+        br.close();
+        bw.flush();
+        bw.close();
     }
 
     public static void main(String[] args) throws IOException {
         // test();
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        main(br, bw);
-        br.close();
-        bw.flush();
-        bw.close();
+        main();
     }
 }

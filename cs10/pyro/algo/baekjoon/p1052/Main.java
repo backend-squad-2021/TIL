@@ -80,7 +80,6 @@ class Main {
 
     private static void testSolve() {
         assertSolve("1", new Dto(3, 1));
-        assertSolve("1", new Dto(3, 1));
     }
 
     private static void test() {

@@ -5,12 +5,12 @@ import java.io.*;
 class Main {
     private static final String lineSeparator = System.lineSeparator();
 
-    private static class Dto {
+    private static class InputDto {
         final String color1;
         final String color2;
         final String color3;
 
-        Dto(String color1, String color2, String color3) {
+        InputDto(String color1, String color2, String color3) {
             this.color1 = color1;
             this.color2 = color2;
             this.color3 = color3;
@@ -49,7 +49,7 @@ class Main {
         }
     }
 
-    private static String solve(Dto input) {
+    private static String solve(InputDto input) {
         Resistance r1 = Resistance.valueOf(input.color1);
         Resistance r2 = Resistance.valueOf(input.color2);
         Resistance r3 = Resistance.valueOf(input.color3);
@@ -57,20 +57,24 @@ class Main {
         return Long.toString(solution);
     }
 
-    private static void assertOutputEquals(String expected, Dto input) {
-        String output = solve(input);
+    private static void printFail(Object input, Object actual, Object expected) {
         System.out.println(lineSeparator);
-        if (expected.equals(output)) {
-            System.out.println("!Success!");
-            return;
-        }
         System.out.println("input: " + input);
-        System.out.println("actual: " + output);
+        System.out.println("actual: " + actual);
         System.out.println("expected: " + expected);
     }
 
+    private static void assertSolve(String expected, InputDto input) {
+        String actual = solve(input);
+        if (expected.equals(actual)) {
+            System.out.print("  !solve Success!  ");
+            return;
+        }
+        printFail(input, actual, expected);
+    }
+
     private static void test() {
-        assertOutputEquals("4700", new Dto("yellow", "violet", "red"));
+        assertSolve("4700", new InputDto("yellow", "violet", "red"));
     }
 
     private static void main() throws IOException {
@@ -80,7 +84,7 @@ class Main {
         String color1 = br.readLine();
         String color2 = br.readLine();
         String color3 = br.readLine();
-        Dto input = new Dto(color1, color2, color3);
+        InputDto input = new InputDto(color1, color2, color3);
 
         String output = solve(input);
         bw.write(output);

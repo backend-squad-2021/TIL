@@ -6,11 +6,11 @@ import java.util.*;
 class Main {
     private static final String lineSeparator = System.lineSeparator();
 
-    private static class Dto {
+    private static class InputDto {
         final int a;
         final int b;
 
-        Dto(int a, int b) {
+        InputDto(int a, int b) {
             this.a = a;
             this.b = b;
         }
@@ -21,7 +21,7 @@ class Main {
         }
     }
 
-    private static String solve(Dto input) {
+    private static String solve(InputDto input) {
         int solution = 1;
         for (int i = 0; i < input.b; i++) {
             solution *= input.a;
@@ -33,25 +33,29 @@ class Main {
         return Integer.toString(solution);
     }
 
-    private static void assertOutputEquals(String expected, Dto input) {
-        String output = solve(input);
+    private static void printFail(Object input, Object actual, Object expected) {
         System.out.println(lineSeparator);
-        if (expected.equals(output)) {
-            System.out.println("!Success!");
-            return;
-        }
         System.out.println("input: " + input);
-        System.out.println("actual: " + output);
+        System.out.println("actual: " + actual);
         System.out.println("expected: " + expected);
     }
 
+    private static void assertSolve(String expected, InputDto input) {
+        String actual = solve(input);
+        if (expected.equals(actual)) {
+            System.out.print("  !solve Success!  ");
+            return;
+        }
+        printFail(input, actual, expected);
+    }
+
     private static void test() {
-        assertOutputEquals("1", new Dto(1, 6));
-        assertOutputEquals("7", new Dto(3, 7));
-        assertOutputEquals("6", new Dto(6, 2));
-        assertOutputEquals("1", new Dto(7, 100));
-        assertOutputEquals("9", new Dto(9, 635));
-        assertOutputEquals("10", new Dto(10, 100));
+        assertSolve("1", new InputDto(1, 6));
+        assertSolve("7", new InputDto(3, 7));
+        assertSolve("6", new InputDto(6, 2));
+        assertSolve("1", new InputDto(7, 100));
+        assertSolve("9", new InputDto(9, 635));
+        assertSolve("10", new InputDto(10, 100));
     }
 
     private static void main() throws IOException {
@@ -63,7 +67,7 @@ class Main {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            Dto input = new Dto(a, b);
+            InputDto input = new InputDto(a, b);
             String output = solve(input);
             bw.write(output + lineSeparator);
         }

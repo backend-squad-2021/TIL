@@ -6,11 +6,11 @@ import java.util.*;
 class Main {
     private static final String lineSeparator = System.lineSeparator();
 
-    private static class Dto {
+    private static class InputDto {
         final int n;
         final int k;
 
-        Dto(int n, int k) {
+        InputDto(int n, int k) {
             this.n = n;
             this.k = k;
         }
@@ -30,7 +30,7 @@ class Main {
         return count;
     }
 
-    private static String solve(Dto input) {
+    private static String solve(InputDto input) {
         int n = input.n;
         int countOfBits = countBits(n);
         while (countOfBits > input.k) {
@@ -40,28 +40,29 @@ class Main {
         return Integer.toString(numOfBottles);
     }
 
-    private static void assertCountBits(int expected, int input) {
-        int actual = countBits(input);
-        if (expected == actual) {
-            System.out.print("  !countBits success!  ");
-            return;
-        }
+    private static void printFail(Object input, Object actual, Object expected) {
         System.out.println(lineSeparator);
         System.out.println("input: " + input);
         System.out.println("actual: " + actual);
         System.out.println("expected: " + expected);
     }
 
-    private static void assertSolve(String expected, Dto input) {
+    private static void assertCountBits(int expected, int input) {
+        int actual = countBits(input);
+        if (expected == actual) {
+            System.out.print("  !countBits success!  ");
+            return;
+        }
+        printFail(input, actual, expected);
+    }
+
+    private static void assertSolve(String expected, InputDto input) {
         String actual = solve(input);
         if (expected.equals(actual)) {
             System.out.print("  !solve success!  ");
             return;
         }
-        System.out.println(lineSeparator);
-        System.out.println("input: " + input);
-        System.out.println("actual: " + actual);
-        System.out.println("expected: " + expected);
+        printFail(input, actual, expected);
     }
 
     private static void testCountBits() {
@@ -79,7 +80,7 @@ class Main {
     }
 
     private static void testSolve() {
-        assertSolve("1", new Dto(3, 1));
+        assertSolve("1", new InputDto(3, 1));
     }
 
     private static void test() {
@@ -94,7 +95,7 @@ class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
-        Dto input = new Dto(n, k);
+        InputDto input = new InputDto(n, k);
 
         String output = solve(input);
         bw.write(output);

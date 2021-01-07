@@ -1,4 +1,6 @@
 NUM=$(seq 1 16)
+FILES_FOR_ZIP=""
+
 for i in $NUM
 do
   DIRNAME="day"$i
@@ -7,7 +9,10 @@ do
   if [ ${#CS_FILES[@]} == 0 ]; then
     echo $DIRNAME is empty
   else
-    echo ${CS_FILES[@]}
+    FILES_FOR_ZIP+=${CS_FILES[@]}
+    FILES_FOR_ZIP+=" "
   fi
-
 done
+
+DATE=$(date "+%Y%m%d")
+zip backup_$DATE $FILES_FOR_ZIP

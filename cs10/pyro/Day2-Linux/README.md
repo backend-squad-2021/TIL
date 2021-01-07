@@ -14,11 +14,17 @@
 ## 실행법
 
 ```sh
-sh *.sh
+sh generate.sh # mission.sh 를 위한 디렉토리와 파일 생성
+sh mission.sh # mission 에 해당하는 스크립트
+rm -rf day* backup* # gitignore 에 해당하는 파일 및 폴더 삭제
 ```
 
 ## sh 파일별 설명
 
 ### generate.sh
 
-day1 부터 day16 까지 폴더를 만들고 안에 테스틍숑 파일들을 만든다.
+day1 부터 day16 까지 폴더를 만들고 안에 mission.sh 를 실행하기 위한 파일들을 만든다.
+
+### mission.sh
+
+[쉘 스크립트 미션](https://lucas.codesquad.kr/main/course/2021-Masters-CS-10/day2-linux/%EC%89%98-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8)에서 요구하는 기능들을 구현

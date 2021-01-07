@@ -1,7 +1,8 @@
+DIR_PREFIX=day # 폴더명
 NUM=$(seq 1 16)
 for i in $NUM
 do
-  DIRNAME="day"$i
+  DIRNAME=$DIR_PREFIX$i
 
   mkdir $DIRNAME
   touch $DIRNAME/"a"$i".java"

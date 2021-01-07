@@ -1,4 +1,4 @@
-// https://www.acmicpc.net/problem/1000
+// https://www.acmicpc.net/problem/1009
 
 import java.io.*;
 import java.util.*;
@@ -22,7 +22,15 @@ class Main {
     }
 
     private static String solve(InputDto input) {
-        return Integer.toString(input.a + input.b);
+        int solution = 1;
+        for (int i = 0; i < input.b; i++) {
+            solution *= input.a;
+            solution %= 10;
+        }
+        if (solution == 0) {
+            solution = 10;
+        }
+        return Integer.toString(solution);
     }
 
     private static void printFail(Object input, Object actual, Object expected) {
@@ -42,21 +50,27 @@ class Main {
     }
 
     private static void test() {
-        assertSolve("3", new InputDto(1, 2));
-        assertSolve("12", new InputDto(5, 7));
+        assertSolve("1", new InputDto(1, 6));
+        assertSolve("7", new InputDto(3, 7));
+        assertSolve("6", new InputDto(6, 2));
+        assertSolve("1", new InputDto(7, 100));
+        assertSolve("9", new InputDto(9, 635));
+        assertSolve("10", new InputDto(10, 100));
     }
 
     private static void main() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int a = Integer.parseInt(st.nextToken());
-        int b = Integer.parseInt(st.nextToken());
-        InputDto input = new InputDto(a, b);
-
-        String output = solve(input);
-        bw.write(output);
+        int n = Integer.parseInt(br.readLine());
+        for (int i = 0; i < n; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            InputDto input = new InputDto(a, b);
+            String output = solve(input);
+            bw.write(output + lineSeparator);
+        }
 
         br.close();
         bw.flush();

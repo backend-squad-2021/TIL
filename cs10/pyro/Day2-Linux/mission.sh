@@ -14,5 +14,9 @@ do
   fi
 done
 
-DATE=$(date "+%Y%m%d")
-zip backup_$DATE $FILES_FOR_ZIP
+ZIP_FILE=backup_$(date "+%Y%m%d")
+zip $ZIP_FILE $FILES_FOR_ZIP
+
+PORT=1234 # 본인이 포트포워딩한 포트번호
+USERNAME=g # 본인 시스템의 유저 이름
+scp -P $PORT ./$ZIP_FILE.zip $USERNAME@127.0.0.1:/backup

@@ -8,5 +8,6 @@ Today I Learned 를 공개하는 레포
 
 
 ### August
+- codesquad repo : https://github.com/Polynomeer/codesquad
 - TIL : https://polynomeer.github.io/
 - Blog : https://velog.io/@polynomeer

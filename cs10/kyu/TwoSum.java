@@ -2,7 +2,7 @@ package leetcode;
 
 class TwoSum {
     public static int[] twoSum ( int[] nums, int target){
-      
+       
         int[] answer = new int[2];
 
         int count = nums.length;
@@ -23,6 +23,13 @@ class TwoSum {
         return answer;
     }
     public static void main(String[] args) {
-        twoSum(new int[](3, 2, 4, 6), 6);
+        System.out.println(twoSum(new int[](3, 2, 4, 6), 6);
+        /**
+         * 문제1
+         * new로 바로 인트배열만들었는데빨간줄
+         * 문제2
+         * 저렇게안하고 변수에 배열담아서 출력했는데 메모리 주소가 나옴
+         */
     }
 }
+

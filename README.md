@@ -10,3 +10,6 @@ Today I Learned 를 공개하는 레포
 ### August
 - TIL : https://polynomeer.github.io/
 - Blog : https://velog.io/@polynomeer
+
+### Kyu
+- Blog : https://velog.io/@kyukim
